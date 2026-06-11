@@ -749,7 +749,7 @@ export default function Home() {
   const heroSlides = [  
     {
       type: "image" as const,
-      src: "/banner1111.png",
+      src: "/banner002.png",
       heading: "",
       sub: "",
       btn: false,
@@ -757,15 +757,7 @@ export default function Home() {
     },
     {
       type: "image" as const,
-      src: "/banner1112.png",
-      heading: "",
-      sub: "",
-      btn: false,
-      objectPosition: "center center",
-    },
-    {
-      type: "image" as const,
-      src: "/banner13.png",
+      src: "/banneer.png",
       heading: "",
       sub: "",
       btn: false,
@@ -904,78 +896,82 @@ export default function Home() {
       <GlobalStyles />
       
       {/* Header */}
-      <header className={`fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#E8E8E0] transition-all duration-300 ${!isVisible && scrolled && !menuOpen ? '-translate-y-full' : 'translate-y-0'}`}>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 group/header ${scrolled ? 'bg-black/60 backdrop-blur-md' : 'bg-transparent'} hover:bg-white hover:shadow-md ${!isVisible && scrolled && !menuOpen ? '-translate-y-full' : 'translate-y-0'}`}>
 
-        {/* Single row: Logo left | Nav center | Icons right */}
-        <div className="hidden md:flex items-center px-8 h-20 relative">
+        {/* Top micro-bar */}
+        <div className="hidden md:flex items-center justify-between px-10 py-1.5 border-b border-white/10 group-hover/header:border-[#E8E8E0]">
+          <span className="text-white/60 text-[11px] tracking-widest flex items-center gap-1 group-hover/header:text-[#999]">
+            English <ChevronDown size={11} className="opacity-60" />
+          </span>
+          <span className="text-white/60 text-[11px] tracking-widest cursor-pointer hover:text-white group-hover/header:text-[#373A36] group-hover/header:hover:text-[#6B8E7F] transition-colors">Login</span>
+        </div>
 
-          {/* Left: Magik Logo */}
+        {/* Main header row: Logo left | Nav RIGHT */}
+        <div className="hidden md:flex items-center justify-between px-10 py-4">
+
+          {/* Left: Logo */}
           <img
             src="/companylogo-2.png"
             alt="Magik Lights"
-            className="h-16 w-auto object-contain flex-shrink-0"
+            className="h-16 w-auto object-contain brightness-0 invert group-hover/header:brightness-100 group-hover/header:invert-0 transition-all duration-300"
           />
 
-          {/* Nav links — next to logo */}
-          <nav className="flex items-center gap-8 ml-8">
-            {["HOME", "ABOUT US", "PRODUCTS", "CONTACT US", "MORE"].map((item) => (
-              <a key={item} href="#"
-                className="text-sm font-semibold tracking-widest text-[#373A36] hover:text-[#6B8E7F] transition-colors duration-200"
-              >
-                {item}
-              </a>
-            ))}
-          </nav>
-
-          {/* Right: icons + CenturyPly */}
-          <div className="ml-auto flex items-center gap-3">
-            <button className="p-1.5 hover:opacity-70 transition-opacity">
-              <Search size={20} className="text-[#373A36]" />
-            </button>
-            <button className="p-1.5 hover:opacity-70 transition-opacity">
-              <User size={20} className="text-[#373A36]" />
-            </button>
-            <button className="p-1.5 hover:opacity-70 transition-opacity">
-              <ShoppingCart size={20} className="text-[#373A36]" />
-            </button>
-            <div className="w-px h-5 bg-[#E8E8E0]" />
-            <img
-              src="/blackcentury.png"
-              alt="Century Ply"
-              className="h-9 w-auto object-contain"
-            />
+          {/* Right: Nav + Search + Icons */}
+          <div className="flex items-center gap-8">
+            <nav className="flex items-center gap-8">
+                {["HOME", "ABOUT US", "PRODUCTS", "CONTACT US", "MORE"].map((item) => (
+                <a key={item} href="#"
+                  className="text-[13px] font-medium tracking-[0.15em] text-white/90 group-hover/header:text-[#373A36] hover:!text-[#6B8E7F] transition-colors duration-200 relative group/link"
+                >
+                  {item}
+                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#6B8E7F] group-hover/link:w-full transition-all duration-300" />
+                </a>
+              ))}
+            </nav>
+            <div className="flex items-center gap-4 border-l border-white/20 group-hover/header:border-[#E8E8E0] pl-6">
+              <button className="p-1 hover:opacity-70 transition-opacity">
+                <Search size={17} className="text-white group-hover/header:text-[#373A36]" />
+              </button>
+              <button className="p-1 hover:opacity-70 transition-opacity">
+                <User size={17} className="text-white group-hover/header:text-[#373A36]" />
+              </button>
+              <button className="p-1 hover:opacity-70 transition-opacity">
+                <ShoppingCart size={17} className="text-white group-hover/header:text-[#373A36]" />
+              </button>
+              <div className="w-px h-4 bg-white/20 group-hover/header:bg-[#E8E8E0]" />
+              <img src="/Century Ply Logo white.png" alt="Century Ply" className="h-7 w-auto object-contain group-hover/header:hidden" />
+              <img src="/blackcentury.png" alt="Century Ply" className="h-7 w-auto object-contain hidden group-hover/header:block" />
+            </div>
           </div>
         </div>
 
         {/* Mobile top row */}
         <div className="md:hidden flex items-center justify-between px-4 py-3">
           <button onClick={() => setMenuOpen(!menuOpen)} className="p-2">
-            <Menu size={24} className="text-[#373A36]" />
+            <Menu size={22} className="text-white" />
           </button>
           <img
             src="/companylogo-2.png"
             alt="Magik Lights"
-            className="h-10 w-auto object-contain"
+            className="h-9 w-auto object-contain brightness-0 invert"
           />
           <button className="p-1.5">
-            <ShoppingCart size={20} className="text-[#373A36]" />
+            <ShoppingCart size={19} className="text-white" />
           </button>
         </div>
 
         {/* Mobile menu */}
         {menuOpen && (
-          <nav className="md:hidden border-t border-[#E8E8E0] bg-white p-4 space-y-3">
-            <a href="#" className="block text-[#373A36] text-sm">Home</a>
-            <a href="#" className="block text-[#373A36] text-sm">About Us</a>
-            <a href="#" className="block text-[#373A36] text-sm">Products</a>
-            <a href="#" className="block text-[#373A36] text-sm">Contact Us</a>
-            <a href="#" className="block text-[#373A36] text-sm">More</a>
+          <nav className="md:hidden border-t border-white/10 bg-black/80 backdrop-blur-md px-6 py-4 space-y-4">
+            {["Home", "About Us", "Products", "Contact Us", "More"].map((item) => (
+              <a key={item} href="#" className="block text-white/80 text-sm tracking-widest font-medium hover:text-white transition-colors">{item}</a>
+            ))}
           </nav>
         )}
       </header>
 
       {/* Hero Section */}
-      <section ref={heroSectionRef} className="relative overflow-hidden" style={{ marginTop: 0, height: '100vh', minHeight: '600px' }}>
+      <section ref={heroSectionRef} className="relative overflow-hidden" style={{ height: '70vh', minHeight: '350px' }}>
         {heroSlides.map((slide, idx) => (
           <div
             key={idx}
@@ -1006,13 +1002,17 @@ export default function Home() {
 
           </div>
         ))}
-        {/* Dots */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        {/* Dots — bottom right */}
+        <div className="absolute bottom-8 right-10 z-20 flex gap-3">
           {heroSlides.map((_, idx) => (
             <button
               key={idx}
               onClick={() => { setHeroIndex(idx); if (heroSlides[idx].type !== "video") setVideoMuted(true); }}
-              className={`h-2 rounded-full transition-all duration-300 ${idx === heroIndex ? "bg-white w-6" : "bg-white/50 w-2"}`}
+              className={`rounded-full border-2 transition-all duration-300 ${
+                idx === heroIndex
+                  ? "w-5 h-5 border-white bg-white"
+                  : "w-5 h-5 border-white bg-transparent"
+              }`}
             />
           ))}
         </div>
