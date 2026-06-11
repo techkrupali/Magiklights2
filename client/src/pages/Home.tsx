@@ -906,13 +906,7 @@ export default function Home() {
       {/* Header */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 group/header ${scrolled ? 'bg-black/60 backdrop-blur-md' : 'bg-transparent'} hover:bg-white hover:shadow-md ${!isVisible && scrolled && !menuOpen ? '-translate-y-full' : 'translate-y-0'}`}>
 
-        {/* Top micro-bar */}
-        <div className="hidden md:flex items-center justify-between px-10 py-1.5 border-b border-white/10 group-hover/header:border-[#E8E8E0]">
-          <span className="text-white/60 text-[11px] tracking-widest flex items-center gap-1 group-hover/header:text-[#999]">
-            English <ChevronDown size={11} className="opacity-60" />
-          </span>
-          <span className="text-white/60 text-[11px] tracking-widest cursor-pointer hover:text-white group-hover/header:text-[#373A36] group-hover/header:hover:text-[#6B8E7F] transition-colors">Login</span>
-        </div>
+
 
         {/* Main header row: Logo left | Nav RIGHT */}
         <div className="hidden md:flex items-center justify-between px-10 py-4">
