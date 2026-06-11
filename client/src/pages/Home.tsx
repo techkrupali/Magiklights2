@@ -748,11 +748,28 @@ export default function Home() {
 
   const heroSlides = [  
     {
-      type: "video" as const,
-      src: "/hero.mp4",
-      heading: "It's in the detail",
-      sub: "Engineered by experts | Handcrafted by artisans",
-      btn: true,
+      type: "image" as const,
+      src: "/banner1111.png",
+      heading: "",
+      sub: "",
+      btn: false,
+      objectPosition: "center top",
+    },
+    {
+      type: "image" as const,
+      src: "/banner1112.png",
+      heading: "",
+      sub: "",
+      btn: false,
+      objectPosition: "center center",
+    },
+    {
+      type: "image" as const,
+      src: "/banner13.png",
+      heading: "",
+      sub: "",
+      btn: false,
+      objectPosition: "center center",
     },
   ];
 
@@ -887,65 +904,61 @@ export default function Home() {
       <GlobalStyles />
       
       {/* Header */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled || menuOpen ? 'bg-white shadow-sm' : 'bg-transparent'} ${!isVisible && scrolled && !menuOpen ? '-translate-y-full' : 'translate-y-0'}`}>
+      <header className={`fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#E8E8E0] transition-all duration-300 ${!isVisible && scrolled && !menuOpen ? '-translate-y-full' : 'translate-y-0'}`}>
 
-        {/* Top row: Logo center, icons right */}
-        <div className="hidden md:flex items-center px-8 pt-5 pb-2 relative">
+        {/* Single row: Logo left | Nav center | Icons right */}
+        <div className="hidden md:flex items-center px-8 h-20 relative">
 
-          {/* Center: Magik Logo */}
-          <div className="absolute left-1/2 -translate-x-1/2">
-            <img 
-              src={scrolled || menuOpen ? "/companylogo-2.png" : "/Magik PNG Logo White.png"} 
-              alt="Magik Lights" 
-              className="h-16 w-auto object-contain transition-all duration-300" 
-            />
-          </div>
+          {/* Left: Magik Logo */}
+          <img
+            src="/companylogo-2.png"
+            alt="Magik Lights"
+            className="h-16 w-auto object-contain flex-shrink-0"
+          />
 
-          {/* Right: icons + CenturyPly */}
-          <div className="ml-auto flex items-center gap-4">
-            <button className="p-1.5 hover:opacity-70 transition-opacity">
-              <Search size={20} className={scrolled || menuOpen ? "text-[#373A36]" : "text-white"} />
-            </button>
-            <button className="p-1.5 hover:opacity-70 transition-opacity">
-              <User size={20} className={scrolled || menuOpen ? "text-[#373A36]" : "text-white"} />
-            </button>
-            <button className="p-1.5 hover:opacity-70 transition-opacity">
-              <ShoppingCart size={20} className={scrolled || menuOpen ? "text-[#373A36]" : "text-white"} />
-            </button>
-            <div className={`w-px h-6 transition-colors duration-300 ${scrolled || menuOpen ? "bg-[#E8E8E0]" : "bg-white/20"}`} />
-            <img 
-              src={scrolled || menuOpen ? "/blackcentury.png" : "/Century Ply Logo white.png"} 
-              alt="Century Ply" 
-              className="h-9 w-auto object-contain transition-all duration-300" 
-            />
-          </div>
-        </div>
-
-        {/* Bottom row: Nav links centered */}
-        <div className="hidden md:block">
-          <nav className="flex items-center justify-center gap-10 pb-4 pt-6">
+          {/* Nav links — next to logo */}
+          <nav className="flex items-center gap-8 ml-8">
             {["HOME", "ABOUT US", "PRODUCTS", "CONTACT US", "MORE"].map((item) => (
               <a key={item} href="#"
-                className={`text-sm font-semibold tracking-widest transition-colors duration-200 ${scrolled || menuOpen ? 'text-[#373A36] hover:text-[#6B8E7F]' : 'text-white hover:text-white/70'}`}
+                className="text-sm font-semibold tracking-widest text-[#373A36] hover:text-[#6B8E7F] transition-colors duration-200"
               >
                 {item}
               </a>
             ))}
           </nav>
+
+          {/* Right: icons + CenturyPly */}
+          <div className="ml-auto flex items-center gap-3">
+            <button className="p-1.5 hover:opacity-70 transition-opacity">
+              <Search size={20} className="text-[#373A36]" />
+            </button>
+            <button className="p-1.5 hover:opacity-70 transition-opacity">
+              <User size={20} className="text-[#373A36]" />
+            </button>
+            <button className="p-1.5 hover:opacity-70 transition-opacity">
+              <ShoppingCart size={20} className="text-[#373A36]" />
+            </button>
+            <div className="w-px h-5 bg-[#E8E8E0]" />
+            <img
+              src="/blackcentury.png"
+              alt="Century Ply"
+              className="h-9 w-auto object-contain"
+            />
+          </div>
         </div>
 
         {/* Mobile top row */}
         <div className="md:hidden flex items-center justify-between px-4 py-3">
           <button onClick={() => setMenuOpen(!menuOpen)} className="p-2">
-            <Menu size={24} className={scrolled || menuOpen ? "text-[#373A36]" : "text-white"} />
+            <Menu size={24} className="text-[#373A36]" />
           </button>
-          <img 
-            src={scrolled || menuOpen ? "/companylogo-2.png" : "/Magik PNG Logo White.png"} 
-            alt="Magik Lights" 
-            className="h-10 w-auto object-contain transition-all duration-300" 
+          <img
+            src="/companylogo-2.png"
+            alt="Magik Lights"
+            className="h-10 w-auto object-contain"
           />
           <button className="p-1.5">
-            <ShoppingCart size={20} className={scrolled || menuOpen ? "text-[#373A36]" : "text-white"} />
+            <ShoppingCart size={20} className="text-[#373A36]" />
           </button>
         </div>
 
@@ -987,23 +1000,10 @@ export default function Home() {
                 }}
               />
             ) : (
-              <img src={slide.src} alt={slide.heading} className="w-full h-full object-cover" style={{ objectPosition: (slide as any).objectPosition || "center" }} />
+              <img src={slide.src} alt={slide.heading} className="w-full h-full object-cover" style={{ objectPosition: (slide as any).objectPosition || 'center center' }} />
             )}
             <div className="" />
-            <div className="absolute inset-0 flex flex-col items-center justify-end text-center text-white px-4 pb-24">
-              <h1 className="text-4xl md:text-7xl font-serif font-light mb-4 tracking-tight">{slide.heading}</h1>
-              <p className="text-sm md:text-base mb-8 tracking-wide">{slide.sub}</p>
-              {slide.btn && (
-                <a
-                  href="https://www.youtube.com/watch?v=jhpxzG74XOM"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-[#373A36] transition-all duration-300 font-medium tracking-widest text-sm"
-                >
-                  WATCH FULL VIDEO
-                </a>
-              )}
-            </div>
+
           </div>
         ))}
         {/* Dots */}
