@@ -763,6 +763,14 @@ export default function Home() {
       btn: false,
       objectPosition: "center center",
     },
+    {
+      type: "image" as const,
+      src: "/banner004.png",
+      heading: "",
+      sub: "",
+      btn: false,
+      objectPosition: "center 30%",
+    },
   ];
 
   useEffect(() => {
